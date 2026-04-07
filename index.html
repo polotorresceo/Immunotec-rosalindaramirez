@@ -566,74 +566,197 @@ section { padding: 80px 20px; }
 
 /* ── PRESENTER ── */
 .presenter-section {
-  background: #000d20;
+  background: linear-gradient(180deg, #000d20 0%, #000510 100%);
   border-top: 1px solid #0d2fff22;
-  text-align: center;
+  padding: 80px 20px;
 }
 
-.presenter-card {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
-
-.presenter-photo-wrap {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 4px solid var(--gold);
-  padding: 4px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  margin-bottom: 20px;
-  box-shadow: 0 0 40px #f0c04044;
+.presenter-magnetic {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0a1540ee, #050d28ee);
+  border: 1px solid #f0c04033;
+  border-radius: 32px;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 0 80px #0d2fff22, 0 0 0 1px #f0c04022, inset 0 1px 0 #ffffff0a;
+  position: relative;
 }
 
-.presenter-photo-wrap img {
+.presenter-magnetic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, #f0c04008 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, #0d2fff0a 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.presenter-img-side {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.presenter-img-side img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
+  object-position: center top;
   display: block;
+  transition: transform .5s ease;
+}
+
+.presenter-magnetic:hover .presenter-img-side img {
+  transform: scale(1.04);
+}
+
+.presenter-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, #0a1540 100%),
+              linear-gradient(0deg, #050d28 0%, transparent 30%);
+}
+
+.presenter-glow-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f0c04010 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.presenter-info-side {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.presenter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f0c04022, #f0c04011);
+  border: 1px solid #f0c04044;
+  border-radius: 30px;
+  padding: 6px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  width: fit-content;
 }
 
 .presenter-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  background: linear-gradient(135deg, #fff, var(--gold));
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #fff 40%, var(--gold));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .presenter-title {
   color: #5070a0;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  font-weight: 500;
 }
 
-.presenter-flags { font-size: 1.5rem; margin-bottom: 20px; letter-spacing: 4px; }
+.presenter-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
+}
+
+.presenter-desc {
+  color: #8090b8;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.presenter-flags {
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.presenter-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.p-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.p-stat strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.p-stat span {
+  font-size: 0.75rem;
+  color: #4060a0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .presenter-wa {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: linear-gradient(135deg, #25d366, #1aad52);
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
-  padding: 14px 32px;
+  padding: 16px 28px;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 4px 20px #25d36655;
+  box-shadow: 0 6px 28px #25d36644;
   transition: transform .2s, box-shadow .2s;
+  width: fit-content;
 }
 
-.presenter-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 30px #25d36677; }
+.presenter-wa:hover { transform: translateY(-3px); box-shadow: 0 10px 36px #25d36677; }
+
+.presenter-wa svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+/* Mobile responsive for presenter */
+@media(max-width: 680px) {
+  .presenter-magnetic {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+  .presenter-img-side {
+    min-height: 320px;
+  }
+  .presenter-img-overlay {
+    background: linear-gradient(0deg, #0a1540 0%, transparent 50%);
+  }
+  .presenter-info-side {
+    padding: 32px 24px;
+  }
+}
 
 /* ── FOOTER ── */
 footer {
@@ -700,6 +823,46 @@ footer span { color: var(--gold); }
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── GLOBAL MOBILE ── */
+@media(max-width: 768px) {
+  section { padding: 60px 16px; }
+
+  .hero { padding: 70px 16px 80px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p.sub { font-size: 0.95rem; }
+  .hero-cta { font-size: 0.95rem; padding: 15px 26px; }
+
+  .pain-grid { grid-template-columns: 1fr; gap: 28px; }
+  .pain-dots { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pain-dot { font-size: 0.78rem; padding: 9px 10px; }
+  .pain-text h3 { font-size: 1.3rem; }
+
+  .products-grid { grid-template-columns: 1fr; gap: 20px; }
+  .product-card { padding: 28px 22px; }
+
+  .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+  .testi-card { padding: 22px 18px; }
+
+  .cta-cards { gap: 12px; }
+  .cta-reason { max-width: 45%; min-width: 140px; padding: 16px 14px; font-size: 0.83rem; }
+  .cta-wa { font-size: 1rem; padding: 18px 28px; text-align: center; }
+
+  .float-wa { bottom: 18px; right: 18px; width: 52px; height: 52px; }
+  .float-wa svg { width: 26px; height: 26px; }
+
+  .section-title { font-size: 1.6rem !important; }
+  .section-sub { font-size: 0.92rem; }
+}
+
+@media(max-width: 420px) {
+  .hero h1 { font-size: 1.75rem; }
+  .pain-dots { grid-template-columns: 1fr 1fr; }
+  .pain-dot { font-size: 0.72rem; padding: 8px 8px; }
+  .cta-reason { max-width: 100%; min-width: unset; }
+  .cta-wa { width: 100%; justify-content: center; }
+  .products-grid, .testimonials-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1065,22 +1228,43 @@ footer span { color: var(--gold); }
 <!-- ══════════════════ PRESENTER ══════════════════ -->
 <section class="presenter-section">
   <div class="container">
-    <div class="presenter-card">
-      <div class="presenter-photo-wrap">
-       
-         
-          
-          
-          <img src="https://i.ibb.co/Vdms9Dq/IMM-Rosalinda-Ram-rez.jpg" alt="Rosalinda Ramírez"
-          onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#0d2fff,#0a1a99);display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:4rem;\'>👩</div>'">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="section-label">Tu Consultora de Confianza</span>
+      <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.5rem);">Hola, soy quien te guiará<br>hacia tu mejor salud</h2>
+    </div>
+
+    <div class="presenter-magnetic">
+      <!-- Imagen lado izquierdo -->
+      <div class="presenter-img-side">
+        <img
+          src="https://i.ibb.co/Vdms9Dq/IMM-Rosalinda-Ram-rez.jpg"
+          alt="Rosalinda Ramírez – Consultora Immunotec"
+          loading="eager"
+        />
+        <div class="presenter-img-overlay"></div>
+        <div class="presenter-glow-ring"></div>
       </div>
-      <p class="presenter-name">Rosalinda Ramírez</p>
-      <p class="presenter-title">Consultora Independiente Certificada · Immunotec</p>
-      <p class="presenter-flags">🇲🇽 🇺🇸 🇨🇦</p>
-      <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20información%20sobre%20Immunocal" class="presenter-wa" target="_blank">
-        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp: 81 3589 1456
-      </a>
+
+      <!-- Info lado derecho -->
+      <div class="presenter-info-side">
+        <div class="presenter-badge">
+          ✦ IMMUNOFest 2026
+        </div>
+        <p class="presenter-name">Rosalinda<br>Ramírez</p>
+        <p class="presenter-title">Consultora Certificada · Immunotec Oficial</p>
+        <div class="presenter-divider"></div>
+        <p class="presenter-desc">Te brindo asesoría personalizada, honesta y gratuita para que elijas el producto ideal según tu condición de salud. Más de 5 años acompañando familias hacia el bienestar.</p>
+        <div class="presenter-stats">
+          <div class="p-stat"><strong>5+</strong><span>Años de experiencia</span></div>
+          <div class="p-stat"><strong>3</strong><span>Países activos</span></div>
+          <div class="p-stat"><strong>100%</strong><span>Compromiso</span></div>
+        </div>
+        <div class="presenter-flags">🇲🇽 🇺🇸 🇨🇦</div>
+        <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20información%20sobre%20Immunocal" class="presenter-wa" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp: 81 3589 1456
+        </a>
+      </div>
     </div>
   </div>
 </section>
