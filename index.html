@@ -29,6 +29,229 @@ body {
   overflow-x: hidden;
 }
 
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background: rgba(0,8,24,0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid #0d2fff22;
+}
+.nav-logo img {
+  height: 40px;
+  display: block;
+  filter: brightness(1.15) drop-shadow(0 0 8px #0d2fff44);
+}
+.nav-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg,#25d366,#1aad52);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px #25d36644;
+  transition: transform .2s;
+  white-space: nowrap;
+}
+.nav-wa:hover { transform: translateY(-2px); }
+.nav-wa svg { width: 16px; height: 16px; fill:#fff; flex-shrink:0; }
+@media(max-width:480px){
+  .navbar { padding: 10px 14px; }
+  .nav-logo img { height: 28px; }
+  .nav-wa-txt { display:none; }
+  .nav-wa { padding: 9px 14px; border-radius:50%; }
+}
+
+/* ── PRODUCT IMAGE SCANNER ── */
+.prod-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(13,47,255,0.05);
+}
+.prod-img-wrap img {
+  max-height: 190px;
+  max-width: 88%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 28px rgba(13,47,255,0.4));
+  transition: transform .5s ease, filter .5s ease;
+  position: relative;
+  z-index: 2;
+}
+.prod-img-wrap:hover img {
+  transform: scale(1.08) translateY(-5px);
+  filter: drop-shadow(0 18px 44px rgba(13,47,255,0.6));
+}
+/* scanner beam */
+.prod-img-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,transparent,#0d2fffc0,#a0c0ff,#0d2fffc0,transparent);
+  box-shadow: 0 0 18px 4px #0d2fff88;
+  top: 0;
+  z-index: 3;
+  animation: scanner 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes scanner {
+  0%   { top: 0%;   opacity: 0; }
+  5%   { opacity: 1; }
+  50%  { top: 100%; opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 0%;   opacity: 0; }
+}
+.card-platinum .prod-img-wrap::after {
+  background: linear-gradient(90deg,transparent,#f0c040c0,#fff6c0,#f0c040c0,transparent);
+  box-shadow: 0 0 18px 4px #f0c04088;
+}
+.card-optimizer .prod-img-wrap::after {
+  background: linear-gradient(90deg,transparent,#00c47ac0,#a0ffd8,#00c47ac0,transparent);
+  box-shadow: 0 0 18px 4px #00c47a88;
+}
+/* scanner grid */
+.prod-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(13,47,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,47,255,0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  z-index: 1;
+  border-radius: 16px;
+}
+
+/* ── VASO SECTION ── */
+.vaso-section {
+  background: radial-gradient(ellipse at 50% 60%, #0d2fff18 0%, #000818 70%);
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.vaso-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #0d2fff0e 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+.vaso-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media(max-width:680px){ .vaso-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+.vaso-img-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+.vaso-glow {
+  position: absolute;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0d2fff30 0%, transparent 70%);
+  animation: vaso-pulse 3s ease-in-out infinite;
+}
+@keyframes vaso-pulse {
+  0%,100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.18); opacity: 1; }
+}
+.vaso-rings { position: absolute; width: 280px; height: 280px; }
+.vaso-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #0d2fff40;
+  animation: ring-expand 3s ease-out infinite;
+}
+.vaso-ring:nth-child(1){ width:100%;height:100%;top:0;left:0;animation-delay:0s; }
+.vaso-ring:nth-child(2){ width:130%;height:130%;top:-15%;left:-15%;animation-delay:1s; }
+.vaso-ring:nth-child(3){ width:160%;height:160%;top:-30%;left:-30%;animation-delay:2s; }
+@keyframes ring-expand {
+  0%   { opacity: 0.6; transform: scale(0.88); }
+  100% { opacity: 0;   transform: scale(1.12); }
+}
+.vaso-img {
+  width: 200px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 40px #0d2fff55) drop-shadow(0 0 20px #0d2fff33);
+  animation: vaso-float 4s ease-in-out infinite;
+}
+@keyframes vaso-float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+.vaso-scanner-beam {
+  position: absolute;
+  left: 8%; right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#0d2fff,#a0c0ff,#0d2fff,transparent);
+  box-shadow: 0 0 16px 3px #0d2fff88;
+  z-index: 3;
+  animation: vaso-scan 2.5s ease-in-out infinite;
+}
+@keyframes vaso-scan {
+  0%   { top: 5%;  opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { top: 92%; opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 5%;  opacity: 0; }
+}
+.vaso-text { text-align: left; }
+.vaso-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 900;
+  background: linear-gradient(135deg,#fff 40%,var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.vaso-text p { color: #7090c0; font-size: 0.97rem; line-height: 1.8; margin-bottom: 18px; }
+.vaso-steps { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.vaso-steps li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: #b0c0e0; line-height: 1.5; }
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 800; color: #fff; flex-shrink: 0;
+  box-shadow: 0 0 10px #0d2fff44;
+}
+@media(max-width:680px){
+  .vaso-text { text-align: center; }
+  .vaso-steps li { text-align: left; }
+  .vaso-img { width: 150px; }
+  .vaso-glow,.vaso-rings { width:180px; height:180px; }
+}
+
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
@@ -40,7 +263,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 20px 80px;
+  padding: 100px 20px 80px;
   position: relative;
   overflow: hidden;
 }
@@ -868,6 +1091,17 @@ footer span { color: var(--gold); }
 </head>
 <body>
 
+<!-- ══════ NAVBAR ══════ -->
+<nav class="navbar">
+  <a class="nav-logo" href="#">
+    <img src="https://i.ibb.co/sd4KvKFR/immunotec.jpg" alt="Immunotec Logo" onerror="this.src='';this.parentElement.innerHTML='<span style=\'font-family:Playfair Display,serif;font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,#fff,#f0c040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;\'>Immunotec®</span>'">
+  </a>
+  <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20información%20sobre%20Immunocal" class="nav-wa" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="nav-wa-txt">Contactar a Rosalinda</span>
+  </a>
+</nav>
+
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20información%20sobre%20Immunocal" class="float-wa" target="_blank" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -957,7 +1191,9 @@ footer span { color: var(--gold); }
       <!-- IMMUNOCAL CLÁSICO -->
       <div class="product-card card-classic">
         <span class="card-badge badge-blue">Clásico · Original</span>
-        <span class="product-icon">🔵</span>
+        <div class="prod-img-wrap">
+          <img src="https://i.ibb.co/btW2YHV/FB-IMG-17692963357161291.jpg" alt="Immunocal Clásico" loading="lazy">
+        </div>
         <h3>Immunocal</h3>
         <p>El precursor de Glutatión más respaldado científicamente del mundo. Proteína de suero de leche no desnaturalizada, patentada y con el más alto valor biológico.</p>
         <ul class="product-features">
@@ -974,7 +1210,9 @@ footer span { color: var(--gold); }
       <div class="product-card card-platinum">
         <div class="best-seller">⭐ MÁS POPULAR</div>
         <span class="card-badge badge-gold">Platinum · Fórmula Avanzada</span>
-        <span class="product-icon">🥇</span>
+        <div class="prod-img-wrap">
+          <img src="https://i.ibb.co/8LG9LnTT/imm-platinum.jpg" alt="Immunocal Platinum" loading="lazy">
+        </div>
         <h3>Immunocal Platinum</h3>
         <p>Toda la potencia del Immunocal clásico, más los complejos exclusivos CMP™ y RMF™ para quienes necesitan un soporte inmunológico de élite.</p>
         <ul class="product-features">
@@ -990,7 +1228,9 @@ footer span { color: var(--gold); }
       <!-- OPTIMIZER -->
       <div class="product-card card-optimizer">
         <span class="card-badge badge-green">Optimizer · Potenciador</span>
-        <span class="product-icon">🌿</span>
+        <div class="prod-img-wrap">
+          <img src="https://i.ibb.co/Jjsm5fgm/204a7731b0f34419b57677650ecc4351.jpg" alt="Immunocal Optimizer" loading="lazy">
+        </div>
         <h3>Immunocal Optimizer</h3>
         <p>El complemento perfecto. Activa el gen NrF2, el "interruptor epigenético" que hace que todos tus antioxidantes trabajen hasta 3 veces mejor.</p>
         <ul class="product-features">
@@ -1003,6 +1243,55 @@ footer span { color: var(--gold); }
         </ul>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ VASO IMMUNOCAL ══════════════════ -->
+<section class="vaso-section">
+  <div class="vaso-inner">
+    <!-- Vaso animado -->
+    <div class="vaso-img-container">
+      <div class="vaso-glow"></div>
+      <div class="vaso-rings">
+        <div class="vaso-ring"></div>
+        <div class="vaso-ring"></div>
+        <div class="vaso-ring"></div>
+      </div>
+      <div class="vaso-scanner-beam"></div>
+      <img class="vaso-img"
+           src="https://i.ibb.co/BK5BL4MR/ummunocalvaso2-removebg-preview-1.png"
+           alt="Vaso Immunocal preparado"
+           loading="lazy">
+    </div>
+
+    <!-- Texto preparación -->
+    <div class="vaso-text">
+      <span class="section-label">Fácil · Rápido · Delicioso</span>
+      <h2>Así de simple<br>es transformar tu salud</h2>
+      <p>Un sobre al día es todo lo que necesitas. Mezcla, agita y disfruta el antioxidante maestro que tu cuerpo necesita cada mañana.</p>
+      <ul class="vaso-steps">
+        <li>
+          <span class="step-num">1</span>
+          Agrega 30 ml de agua o jugo frío en el vaso mezclador Immunotec
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          Añade 1–2 sobres de Immunocal, Platinum o Optimizer
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          Tapa y agita vigorosamente por 15 segundos
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          Completa con 150 ml más de líquido · ¡Disfrútalo!
+        </li>
+      </ul>
+      <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20pedir%20mi%20Immunocal" class="hero-cta" target="_blank" style="font-size:0.95rem;padding:14px 28px;animation:none;">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        ¡Lo quiero ya! – WhatsApp
+      </a>
     </div>
   </div>
 </section>
