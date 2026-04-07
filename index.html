@@ -798,12 +798,12 @@ section { padding: 80px 20px; }
   max-width: 900px;
   margin: 0 auto;
   background: linear-gradient(135deg, #0a1540ee, #050d28ee);
-  border: 1px solid #f0c04033;
+  border: 1px solid #f0c04044;
   border-radius: 32px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  box-shadow: 0 0 80px #0d2fff22, 0 0 0 1px #f0c04022, inset 0 1px 0 #ffffff0a;
+  grid-template-columns: 420px 1fr;
+  box-shadow: 0 0 100px #0d2fff28, 0 0 0 1px #f0c04028, inset 0 1px 0 #ffffff0a;
   position: relative;
 }
 
@@ -819,7 +819,7 @@ section { padding: 80px 20px; }
 .presenter-img-side {
   position: relative;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 460px;
 }
 
 .presenter-img-side img {
@@ -829,17 +829,19 @@ section { padding: 80px 20px; }
   object-position: center top;
   display: block;
   transition: transform .5s ease;
+  filter: brightness(1.25) contrast(1.05) saturate(1.12);
 }
 
 .presenter-magnetic:hover .presenter-img-side img {
   transform: scale(1.04);
+  filter: brightness(1.32) contrast(1.05) saturate(1.15);
 }
 
 .presenter-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 60%, #0a1540 100%),
-              linear-gradient(0deg, #050d28 0%, transparent 30%);
+  background: linear-gradient(90deg, transparent 55%, #0a1540 100%),
+              linear-gradient(0deg, #050d28cc 0%, transparent 25%);
 }
 
 .presenter-glow-ring {
@@ -965,20 +967,26 @@ section { padding: 80px 20px; }
 .presenter-wa svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
 
 /* Mobile responsive for presenter */
-@media(max-width: 680px) {
+@media(max-width: 700px) {
   .presenter-magnetic {
     grid-template-columns: 1fr;
     border-radius: 24px;
   }
   .presenter-img-side {
-    min-height: 320px;
+    min-height: 340px;
+    max-height: 380px;
+  }
+  .presenter-img-side img {
+    object-position: center 20%;
   }
   .presenter-img-overlay {
-    background: linear-gradient(0deg, #0a1540 0%, transparent 50%);
+    background: linear-gradient(0deg, #0a1540 0%, transparent 55%);
   }
   .presenter-info-side {
-    padding: 32px 24px;
+    padding: 28px 22px 36px;
   }
+  .presenter-name { font-size: 1.9rem; }
+  .presenter-wa { width: 100%; justify-content: center; }
 }
 
 /* ── FOOTER ── */
@@ -1094,7 +1102,7 @@ footer span { color: var(--gold); }
 <!-- ══════ NAVBAR ══════ -->
 <nav class="navbar">
   <a class="nav-logo" href="#">
-    <img src="https://i.ibb.co/sd4KvKFR/immunotec.jpg" alt="Immunotec Logo" onerror="this.src='';this.parentElement.innerHTML='<span style=\'font-family:Playfair Display,serif;font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,#fff,#f0c040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;\'>Immunotec®</span>'">
+    <img src="https://i.ibb.co/Z6G50SV0/Screenshot-2026-04-06-20-36-08-removebg-preview.png" alt="Immunotec Logo" style="height:46px;filter:brightness(1.4) drop-shadow(0 0 12px rgba(13,47,255,0.5));" onerror="this.src='';this.parentElement.innerHTML='<span style=\'font-family:Playfair Display,serif;font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,#fff,#f0c040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;\'>Immunotec®</span>'">
   </a>
   <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20información%20sobre%20Immunocal" class="nav-wa" target="_blank">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1211,7 +1219,7 @@ footer span { color: var(--gold); }
         <div class="best-seller">⭐ MÁS POPULAR</div>
         <span class="card-badge badge-gold">Platinum · Fórmula Avanzada</span>
         <div class="prod-img-wrap">
-          <img src="https://i.ibb.co/8LG9LnTT/imm-platinum.jpg" alt="Immunocal Platinum" loading="lazy">
+          <img src="https://i.ibb.co/WvzLG0xy/IMM-Platinum-removebg-preview.png" alt="Immunocal Platinum" loading="lazy">
         </div>
         <h3>Immunocal Platinum</h3>
         <p>Toda la potencia del Immunocal clásico, más los complejos exclusivos CMP™ y RMF™ para quienes necesitan un soporte inmunológico de élite.</p>
@@ -1229,7 +1237,7 @@ footer span { color: var(--gold); }
       <div class="product-card card-optimizer">
         <span class="card-badge badge-green">Optimizer · Potenciador</span>
         <div class="prod-img-wrap">
-          <img src="https://i.ibb.co/Jjsm5fgm/204a7731b0f34419b57677650ecc4351.jpg" alt="Immunocal Optimizer" loading="lazy">
+          <img src="https://i.ibb.co/q3k0bnJ2/FB-IMG-17692963357161291-removebg-preview.png" alt="Immunocal Optimizer" loading="lazy">
         </div>
         <h3>Immunocal Optimizer</h3>
         <p>El complemento perfecto. Activa el gen NrF2, el "interruptor epigenético" que hace que todos tus antioxidantes trabajen hasta 3 veces mejor.</p>
@@ -1260,32 +1268,33 @@ footer span { color: var(--gold); }
       </div>
       <div class="vaso-scanner-beam"></div>
       <img class="vaso-img"
-           src="https://i.ibb.co/BK5BL4MR/ummunocalvaso2-removebg-preview-1.png"
-           alt="Vaso Immunocal preparado"
-           loading="lazy">
+           src="https://i.ibb.co/Z6G50SV0/Screenshot-2026-04-06-20-36-08-removebg-preview.png"
+           alt="Logo Immunotec"
+           loading="lazy"
+           style="width:240px;filter:brightness(1.5) drop-shadow(0 0 30px rgba(13,47,255,0.7)) drop-shadow(0 0 60px rgba(13,47,255,0.3));">
     </div>
 
     <!-- Texto preparación -->
     <div class="vaso-text">
-      <span class="section-label">Fácil · Rápido · Delicioso</span>
-      <h2>Así de simple<br>es transformar tu salud</h2>
-      <p>Un sobre al día es todo lo que necesitas. Mezcla, agita y disfruta el antioxidante maestro que tu cuerpo necesita cada mañana.</p>
+      <span class="section-label">Ciencia · Innovación · Resultados</span>
+      <h2>30 años de ciencia<br>respaldando tu bienestar</h2>
+      <p>Immunotec es la empresa pionera en investigación del Glutatión. Sus productos están avalados por la FDA, Health Canada y el PDR. Más de 30 años llevando ciencia de punta a las familias del mundo.</p>
       <ul class="vaso-steps">
         <li>
-          <span class="step-num">1</span>
-          Agrega 30 ml de agua o jugo frío en el vaso mezclador Immunotec
+          <span class="step-num">✓</span>
+          Clasificado GRAS por la FDA de los Estados Unidos
         </li>
         <li>
-          <span class="step-num">2</span>
-          Añade 1–2 sobres de Immunocal, Platinum o Optimizer
+          <span class="step-num">✓</span>
+          Aprobado por Health Canada como suplemento natural efectivo
         </li>
         <li>
-          <span class="step-num">3</span>
-          Tapa y agita vigorosamente por 15 segundos
+          <span class="step-num">✓</span>
+          Registrado en el Physicians Desk Reference (PDR)
         </li>
         <li>
-          <span class="step-num">4</span>
-          Completa con 150 ml más de líquido · ¡Disfrútalo!
+          <span class="step-num">✓</span>
+          Más de 40 países confían en la marca · Desde 1996
         </li>
       </ul>
       <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20pedir%20mi%20Immunocal" class="hero-cta" target="_blank" style="font-size:0.95rem;padding:14px 28px;animation:none;">
@@ -1548,7 +1557,7 @@ footer span { color: var(--gold); }
           <div class="p-stat"><strong>3</strong><span>Países activos</span></div>
           <div class="p-stat"><strong>100%</strong><span>Compromiso</span></div>
         </div>
-        <div class="presenter-flags">🇲🇽 🇺🇸 🇨🇦</div>
+        <div class="presenter-flags" style="font-size:1.8rem;letter-spacing:8px;padding:8px 0;">🇲🇽 🇺🇸 🇨🇦</div>
         <a href="https://wa.me/528135891456?text=Hola%20Rosalinda%2C%20quiero%20información%20sobre%20Immunocal" class="presenter-wa" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp: 81 3589 1456
